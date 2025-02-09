@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Run the pipeline when pushing to 'main'
+      - master  # Run the pipeline when pushing to 'main'
 
 jobs:
   build:
