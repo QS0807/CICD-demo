@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Run the pipeline when pushing to 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Set up Java and Maven for Spring Boot
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # Set up Node.js for Angular
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Build Angular App
+      - name: Install Dependencies & Build Angular
+        run: |
+          cd frontend
+          npm install
+          npm run build --configuration=production
+
+      # Build Spring Boot App
+      - name: Build Spring Boot with Maven
+        run: |
+          cd backend
+          mvn clean package -DskipTests
+
+      # Build Docker Images
+      - name: Build & Push Docker Images
+        run: |
+          docker build -t my-angular-app -f Dockerfile-frontend .
+          docker build -t my-springboot-app -f Dockerfile-backend .
+
+      # Deploy using Docker Compose
+      - name: Deploy with Docker Compose
+        run: |
+          docker-compose down
+          docker-compose up -d
