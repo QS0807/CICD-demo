@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   backend:
-    build: ./demo-1
+    build:
+      context: .
+      dockerfile: ../Dockerfile-backend
     container_name: spring-boot-app
     ports:
       - "8080:8080"
@@ -11,7 +13,9 @@ services:
       - frontend
 
   frontend:
-    build: ./angular-frontend
+    build:
+      context: .
+      dockerfile: ../Dockerfile-frontend
     container_name: angular-app
     ports:
       - "4200:80"
