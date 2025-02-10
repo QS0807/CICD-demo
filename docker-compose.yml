@@ -2,7 +2,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .
+      context: ./demo-1
       dockerfile: Dockerfile-backend
     container_name: spring-boot-app
     ports:
