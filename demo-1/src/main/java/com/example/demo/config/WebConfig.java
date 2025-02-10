@@ -16,7 +16,7 @@ public class WebConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://44.211.61.215:4200")); // Allow frontend
+        config.setAllowedOrigins(List.of("http://3.93.13.118:4200")); // Allow frontend
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Origin", "Content-Type", "Accept", "Authorization"));
 
