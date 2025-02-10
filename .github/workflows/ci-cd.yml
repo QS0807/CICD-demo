@@ -29,14 +29,14 @@ jobs:
       # Build Angular App
       - name: Install Dependencies & Build Angular
         run: |
-          cd frontend
+          cd angular-frontend
           npm install
           npm run build --configuration=production
 
       # Build Spring Boot App
       - name: Build Spring Boot with Maven
         run: |
-          cd backend
+          cd demo-1
           mvn clean package -DskipTests
 
       # Build Docker Images
