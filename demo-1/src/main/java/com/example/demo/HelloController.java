@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://44.211.61.215:4200")
 public class HelloController {
 
     @GetMapping("/hello")
