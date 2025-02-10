@@ -38,6 +38,12 @@ jobs:
         run: |
           cd demo-1
           mvn clean package -DskipTests
+          
+      # Build Docker Images
+      - name: Build & Push Docker Images
+        run: |
+          docker build -t my-angular-app -f Dockerfile-frontend .
+          docker build -t my-springboot-app -f Dockerfile-backend .
 
       - name: Install SSH Key
         run: |
