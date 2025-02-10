@@ -45,6 +45,18 @@ jobs:
           docker build -t my-angular-app -f Dockerfile-frontend .
           docker build -t my-springboot-app -f Dockerfile-backend .
 
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      # Verify Docker and Docker Compose are installed
+      - name: Check Docker Versions
+        run: |
+          docker --version
+          docker-compose --version
+          
       # Deploy using Docker Compose
       - name: Deploy with Docker Compose
         run: |
