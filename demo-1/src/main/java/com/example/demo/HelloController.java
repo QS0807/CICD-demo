@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 
 public class HelloController {
-
-    @CrossOrigin(origins = "http://44.211.61.215:4200")
+    
     @GetMapping("/hello")
     public String sayHello() {
         return "Hello from Spring Boot!";
