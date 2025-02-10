@@ -1,5 +1,6 @@
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
 COPY target/demo-0.0.1.jar /app/app.jar
+RUN chmod +x /app/app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
