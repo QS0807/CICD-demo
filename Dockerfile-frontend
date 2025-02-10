@@ -2,7 +2,7 @@ FROM node:16 as build
 WORKDIR /app
 COPY angular-frontend/package.json .
 RUN npm install
-COPY . .
+COPY angular-frontend/ ./
 RUN npm run build --configuration=production
 
 FROM nginx:alpine
