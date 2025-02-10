@@ -39,24 +39,6 @@ jobs:
           cd demo-1
           mvn clean package -DskipTests
 
-      # Build Docker Images
-      - name: Build & Push Docker Images
-        run: |
-          docker build -t my-angular-app -f Dockerfile-frontend .
-          docker build -t my-springboot-app -f Dockerfile-backend .
-
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      # Verify Docker and Docker Compose are installed
-      - name: Check Docker Versions
-        run: |
-          docker --version
-          docker-compose --version
-
       - name: Install SSH Key
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
@@ -66,7 +48,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_IP }} << 'EOF'
           set -e
-          
+
           sudo apt update
           sudo apt install -y docker.io docker-compose
           sudo systemctl start docker
