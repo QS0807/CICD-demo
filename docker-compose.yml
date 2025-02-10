@@ -11,7 +11,7 @@ services:
       - frontend
 
   frontend:
-    build: ./angular_frontend
+    build: ./angular-frontend
     container_name: angular-app
     ports:
       - "4200:80"
