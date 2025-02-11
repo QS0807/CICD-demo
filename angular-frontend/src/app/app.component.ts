@@ -3,7 +3,7 @@ import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>{{ "Hello from Spring Boot!" }}</h1>`
+  template: `<h1>{{ message }}</h1>`
 })
 export class AppComponent implements OnInit {
   message: string = '';
